@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Learning Path Guide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Dashboard Screen -->
+    <div id="dashboardScreen">
+        <header>
+            <h1>Learning Path Dashboard</h1>
+            <div class="user-info">
+                <span id="welcomeUser"></span>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="progress-overview">
+                <h2>Your Progress</h2>
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <h3 id="completedSkills">0</h3>
+                        <p>Skills Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="totalSkills">0</h3>
+                        <p>Total Skills</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="progressPercentage">0%</h3>
+                        <p>Overall Progress</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="learning-paths">
+                <h2>Learning Paths</h2>
+                <div id="pathsContainer" class="paths-container">
+                    <!-- Learning paths will be dynamically loaded here -->
+                </div>
+            </div>
+
+            <div class="roadmap-container" id="roadmapContainer">
+                <h2 id="currentPathTitle">Select a Learning Path</h2>
+                <div id="skillsRoadmap" class="skills-roadmap">
+                    <!-- Skills roadmap will be displayed here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="dashboard-script.js"></script>
+</body>
+</html>
