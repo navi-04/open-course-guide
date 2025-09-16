@@ -52,6 +52,46 @@
         </main>
     </div>
 
+    <!-- Skill Details Modal -->
+    <div id="skillModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalSkillTitle">Skill Details</h2>
+                <span class="close" onclick="closeSkillModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="skill-detail-section">
+                    <h3>Overview</h3>
+                    <p id="modalSkillDescription"></p>
+                </div>
+                
+                <div class="skill-detail-grid">
+                    <div class="detail-item">
+                        <h4>Level</h4>
+                        <span id="modalSkillLevel" class="level-badge"></span>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Estimated Time</h4>
+                        <span id="modalSkillTime"></span>
+                    </div>
+                </div>
+
+                <div class="skill-detail-section" id="prerequisitesSection">
+                    <h3>Prerequisites</h3>
+                    <div id="modalPrerequisites" class="prerequisites-list"></div>
+                </div>
+
+                <div class="skill-detail-section">
+                    <h3>Learning Resources</h3>
+                    <div id="modalResources" class="resources-list"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="closeSkillModal()" class="close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script src="data.js"></script>
     <script src="dashboard-script.js"></script>
 </body>

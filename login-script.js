@@ -75,22 +75,6 @@ function handleLogin(event) {
     }, 800);
 }
 
-function fillCredentials(username, password) {
-    document.getElementById('username').value = username;
-    document.getElementById('password').value = password;
-    
-    // Add visual feedback
-    const demoAccounts = document.querySelectorAll('.demo-account');
-    demoAccounts.forEach(account => account.style.background = '#f8f9fa');
-    
-    event.target.closest('.demo-account').style.background = '#e7f3ff';
-    
-    // Auto-focus on login button
-    setTimeout(() => {
-        document.querySelector('.login-btn').focus();
-    }, 100);
-}
-
 function showError(message) {
     const errorElement = document.getElementById('loginError');
     errorElement.textContent = message;

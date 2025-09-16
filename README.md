@@ -45,22 +45,14 @@ A comprehensive learning path website that provides personalized roadmaps for di
    - This will automatically redirect you to the login page
    - Or directly open `login.html` to go straight to login
 
-### Demo Accounts
-Use these credentials to test the application:
-
-| Username  | Password    | Role      |
-|-----------|-------------|-----------|
-| student   | password123 | Student   |
-| developer | dev123      | Developer |
-| designer  | design123   | Designer  |
 
 ## Usage
 
 ### Logging In
 1. Open the application in your browser (it will redirect to login automatically)
-2. Use one of the demo accounts or add your own in `data.js`
+2. Use one of the available accounts (naveen/1234 or raj/1234) or add your own in `data.js`
 3. Click "Login" to access the dashboard
-4. You can also click on any demo account card to auto-fill credentials
+4. You can also click on any account card to auto-fill credentials
 
 ### Navigating Learning Paths
 1. View available learning paths on the dashboard

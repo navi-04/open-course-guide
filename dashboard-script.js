@@ -150,18 +150,66 @@ function showSkillDetails(pathId, skillId) {
     const path = learningPaths[pathId];
     const skill = path.skills.find(s => s.id === skillId);
     
-    alert(`
-Skill: ${skill.title}
-Level: ${skill.level}
-Estimated Time: ${skill.estimatedTime}
-Description: ${skill.description}
-
-Prerequisites: ${skill.prerequisites.length > 0 ? skill.prerequisites.join(', ') : 'None'}
-
-Resources:
-${skill.resources.map(resource => `• ${resource}`).join('\n')}
-    `);
+    // Populate modal content
+    document.getElementById('modalSkillTitle').textContent = skill.title;
+    document.getElementById('modalSkillDescription').textContent = skill.description;
+    document.getElementById('modalSkillLevel').textContent = skill.level;
+    document.getElementById('modalSkillLevel').className = `level-badge ${skill.level}`;
+    document.getElementById('modalSkillTime').textContent = skill.estimatedTime;
+    
+    // Handle prerequisites
+    const prerequisitesSection = document.getElementById('prerequisitesSection');
+    const prerequisitesContainer = document.getElementById('modalPrerequisites');
+    
+    if (skill.prerequisites.length > 0) {
+        prerequisitesSection.style.display = 'block';
+        prerequisitesContainer.innerHTML = skill.prerequisites.map(prereqId => {
+            // Find the prerequisite skill name
+            const prereqSkill = path.skills.find(s => s.id === prereqId);
+            const prereqName = prereqSkill ? prereqSkill.title : prereqId;
+            return `<span class="prerequisite-tag">${prereqName}</span>`;
+        }).join('');
+    } else {
+        prerequisitesSection.style.display = 'none';
+    }
+    
+    // Handle resources
+    const resourcesContainer = document.getElementById('modalResources');
+    resourcesContainer.innerHTML = skill.resources.map(resource => {
+        const domain = new URL(resource).hostname.replace('www.', '');
+        return `
+            <a href="${resource}" target="_blank" class="resource-link">
+                <span class="resource-icon">🔗</span>
+                <span class="resource-text">${domain}</span>
+                <span class="resource-icon">↗</span>
+            </a>
+        `;
+    }).join('');
+    
+    // Show modal
+    document.getElementById('skillModal').style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
 }
+
+function closeSkillModal() {
+    document.getElementById('skillModal').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('skillModal');
+    if (event.target === modal) {
+        closeSkillModal();
+    }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeSkillModal();
+    }
+});
 
 // Progress tracking functions
 function calculatePathProgress(pathId) {
